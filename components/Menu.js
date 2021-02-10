@@ -49,11 +49,21 @@ function menuMaker (array){
   //menu button functionality
   const menuButton = document.querySelector(".menu-button");
   menuButton.addEventListener("click", (e) => {
-    menu.classList.toggle("menu--open");
+    menu.classList.toggle("menu--open"); //menu open will allow for transition of menu div width (animation)
+    e.stopPropagation(); //stop bubbling to allow for click event below to work
   })
+  
+  //this will close the sidemenu if you click on articles div
+  document.querySelector(".articles").addEventListener("click",(e) =>{
+    if(menu.classList.contains("menu--open")){
+      menu.classList.toggle("menu--open");
+    }
+  })
+ 
   return menu;
 }
 
 
 const header = document.querySelector(".header");
 header.appendChild(menuMaker(menuItems));
+
