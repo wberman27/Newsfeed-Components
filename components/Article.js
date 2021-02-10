@@ -126,6 +126,7 @@ const data = [
 
 function articleMaker (artObj){
 
+  // create elements onto dom
 const article = document.createElement("div");
 const artTitle = document.createElement("h2");
 const date = document.createElement("p");
@@ -134,6 +135,7 @@ const p2 = document.createElement("p");
 const p3 = document.createElement("p");
 const expandButton = document.createElement("span");
 
+// append these elements onto article as children
 article.appendChild(artTitle);
 article.appendChild(date);
 article.appendChild(p1);
@@ -141,6 +143,8 @@ article.appendChild(p2);
 article.appendChild(p3);
 article.appendChild(expandButton);
 
+
+//give each element a class name
 article.classList.add("article");
 artTitle.classList.add("artTitle");
 date.classList.add("date");
@@ -149,7 +153,7 @@ p2.classList.add("p2");
 p3.classList.add("p3");
 expandButton.classList.add("expandButton");
 
-
+//add data object keys as text for the elements
 artTitle.textContent = artObj["title"];
 date.textContent = artObj["date"];
 p1.textContent = artObj["firstParagraph"];
@@ -157,7 +161,7 @@ p2.textContent = artObj["secondParagraph"];
 p3.textContent = artObj["thirdParagraph"];
 expandButton.textContent = "+";
 
-
+//on click of button toggle open/close the article
     expandButton.addEventListener("click", (e) =>{
       article.classList.toggle("article-open")
     })
@@ -165,9 +169,10 @@ expandButton.textContent = "+";
   return article;
 
 }
-
+//grab articles 
 const articles = document.querySelector(".articles");
 
+//for each data object into article maker append it to articles
 data.forEach(dataObj =>{
   const newsArticles = articles.appendChild(articleMaker(dataObj));
   return newsArticles;
